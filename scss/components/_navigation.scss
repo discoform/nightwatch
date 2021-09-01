@@ -1,58 +1,35 @@
 nav#main-menu {
-    @include menu-expand;
+    display: none;
+    overflow: hidden;
     z-index: 9999;
 
     a {
         display: block;
         padding-left: 0;
-        text-decoration: none;
     }
     &.responsive {
+        @include margins(0, 0, 1, 0);
         display: grid;
-        margin-bottom: $base-spacing;
 
         ul {
             z-index: 9998;
-            margin-top: 0;
             list-style-type: none;
-            padding: $base-spacing/4 $base-spacing;
-            background: $grey;
+            padding: $base-spacing/4 0;
+
             li {
-                margin: 0 auto 0 auto;
                 border-bottom: 1px solid $white;
                 padding: $base-spacing/2 $base-spacing/2 $base-spacing/2 0;
-
-                &:last-of-type {
-                    border-bottom: none;
-                }
-                a {
-                    display: block;
-                    padding-left: 0;
-                    text-decoration: none;
-                }
             }
         }
         .search-container {
             padding: $base-spacing;
             margin-top: $base-spacing;
-            background: $grey;
         }
     }
-}
 
-a.icon {
-    position: absolute;
-    top: $base-spacing/2;
-    right: 0;
-    margin: 14px 0 0 auto;
-    width: 34px;
-}
+    // desktop adjustments
 
-@include breakpoint(large) {
-    a.icon {
-        display: none;
-    }
-    nav#main-menu {
+    @include breakpoint(large) {
         margin: 0 0 0 auto;
         display: flex;
         flex-direction: column;
@@ -60,8 +37,6 @@ a.icon {
 
         ul {
             order: 2;
-            display: inline-block;
-            margin: 0;
             text-align: right;
 
             li {
@@ -72,5 +47,26 @@ a.icon {
                 }
             }
         }
+        .search-container input {
+            margin: 0;
+        }
+    }
+}
+
+// trigger for the mobile navigation is hidden on larger screens
+
+a.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 14px 0 0 auto;
+    width: 34px;
+
+    svg {
+        fill: $white;
+    }
+
+    @include breakpoint(large) {
+        display: none;
     }
 }

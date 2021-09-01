@@ -17,18 +17,15 @@ p {
     line-height: 1.25;
 }
 
+
+a{
+    text-decoration: none;
+font-weight: bolder;
+}
+
 /*  Links Within Paragraphs*/
 
-p a {
-    color: inherit;
-    box-shadow: inset 0px -5px 0px $greya;
 
-    &:hover {
-        color: $white;
-        box-shadow: inset 0px -100px 10px $greya;
-        transition: all ease 0.3s;
-    }
-}
 
 ul,
 ol {
@@ -37,9 +34,10 @@ ol {
 }
 
 ul li,
-ol li {
+ol li  {
     line-height: 1.5rem;
 }
+
 
 ul ul,
 ol ul,
@@ -119,6 +117,4 @@ code {
 figcaption {
     font-size: 0.75rem;
     @include margins(0.5, 0, 0, 0);
-
 }
-
