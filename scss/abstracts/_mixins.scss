@@ -59,11 +59,3 @@ $left: $base-spacing;
   }
 }
 
-@mixin menu-expand {
-  display: none;
-  overflow: hidden;
-
-  &.responsive {
-    display: block;
-  }
-}

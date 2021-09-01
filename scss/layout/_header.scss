@@ -1,129 +1,101 @@
 // -----------------------------------------------------------------------------
-// This section contains all styles related to the main header of the site.
+// This section contains all styles related to the main header of the site (.site-header)
 // -----------------------------------------------------------------------------
-// .site-header {
-//     @include margins(0, 0, 1, 0);
-//     padding: $base-spacing;
-//     border-bottom: 1px solid $grey;
-
-//     .header-content {
-//         @include max-width-flex;
-//         display: flex;
-//         justify-content: space-between;
-//         align-items: center;
-
-//         section {
-//             display: flex;
-//             flex-direction: column;
-//             justify-content: space-between;
-//         }
-//     }
-
-//     .site-title{
-//         margin-left: -5px;
-
-//     }
-// }
 
 .site-header {
     @include margins(0, 0, 1, 0);
     padding: $base-spacing $base-spacing 0 $base-spacing;
     border-bottom: 1px solid $grey;
+    background-color: $black;
+    color: $white;
 
     .header-content {
         position: relative;
         max-width: $max-width/1.5;
         margin: auto;
+        .site-title {
+            margin: 0 0 0 -3px;
+            word-break: break-word;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        ul {
+            margin: 0;
+        }
+
+        // display grid at desktop size
 
         @include breakpoint(large) {
             display: grid;
             gap: $base-spacing;
             padding: $base-spacing;
-        }
 
-        section {
-            display: grid;
-            align-content: space-between;
-
-            &:first-of-type {
-                grid-column: 1;
-                justify-content: left;
-                display: flex;
-                flex-direction: column;
-                max-width: calc(100% - #{$base-spacing * 3});
-
-                .site-title {
-                    word-break: break-word;
-                    font-size: 2rem;
-                    line-height: 1;
-                    @include breakpoint(large) {
-                        font-size: 3rem;
-                    }
-                }
+            .site-title {
+                font-size: 3rem;
             }
+            section {
+                display: grid;
 
-            &:nth-last-of-type(1) {
-                @include breakpoint(large) {
+                &:first-of-type {
+                    grid-column: 1;
+                    justify-content: left;
+                    display: flex;
+                    flex-direction: column;
+                    max-width: calc(100% - #{$base-spacing * 3});
+                }
+                &:nth-last-of-type(1) {
                     grid-column: 2;
                 }
             }
         }
     }
-
-    ul,
-    .search-container,
-    .search-container input {
-        margin: 0;
-    }
-    .site-title {
-        margin: 0 0 0 -3px;
-    }
 }
 
 // -----------------------------------------------------------------------------
-// This section contains all styles related to the article headers of the site.
+// This section contains all styles related to the article headers of the site. (.article-header)
 // -----------------------------------------------------------------------------
 
 .article-header {
+    .date-published {
+        @include margins(0, 0, 0.25, 0);
+    }
     .header-content {
         @include max-width-flex;
+        @include margins(0, 0, .5, 0);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        @include margins(0, 0, 1, 0);
+
+        .post-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 0 $base-spacing * 3;
+        }
+
+        .article-title {
+            margin: $base-spacing/4 0 $base-spacing/4 -3px;
+        }
+
+        .post-category {
+            display: inline-block;
+            padding: $base-spacing/2.5 $base-spacing/2.5 $base-spacing/2.5 0;
+        }
+
+        // adjust flex directions at desktop size
 
         @include breakpoint(large) {
+            @include margins(0, 0, 0.5, 0);
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            @include margins(0, 0, 0, 0);
+
+            .article-title {
+                margin: auto 0 auto -3px;
+            }
+            .post-category {
+                padding: $base-spacing/2.5 $base-spacing/2;
+                border: 1px solid $grey;
+            }
         }
-    }
-
-    .post-category,
-    .date-published {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-    }
-
-    .date-published {
-        svg {
-            margin-bottom: -2px;
-        }
-    }
-
-    .article-title {
-        margin-left: -3px;
-        margin-top: $base-spacing/1.5;
-        @include breakpoint(large) {
-            margin-top: $base-spacing;
-        }
-    }
-
-    .post-category {
-        padding: $base-spacing/2.5 $base-spacing/2;
-        border: 1px solid $greya;
-        border-bottom: 1px solid $grey;
-        text-decoration: none;
     }
 }
