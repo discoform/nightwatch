@@ -1,0 +1,15 @@
+.social-links {
+    margin-top: 0;
+
+
+    li {
+        display: inline;
+
+        a {
+            padding: $base-spacing/2 $base-spacing/2 $base-spacing/2 0;
+            text-decoration: unset;
+            display: inline-block;
+
+        }
+    }
+}

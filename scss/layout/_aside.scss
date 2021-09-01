@@ -1,0 +1,44 @@
+aside {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    @include margins(0, 1, 2, 1);
+
+    .sidebar-widget {
+        @include margins(0.5, 0, 0, 0);
+        padding-bottom: $base-spacing;
+        border-bottom: 1px solid $grey;
+        :first-child {
+            margin-top: 0;
+        }
+        :last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        &:last-of-type {
+            border-bottom: none;
+            position: sticky;
+            top: $base-spacing;
+            @include breakpoint(large) {
+                top: $base-spacing * 2;
+            }
+        }
+    }
+
+    @include breakpoint(large) {
+        @include margins(0, 0, 2, 1);
+    }
+
+    ul li a {
+        text-decoration: none;
+    }
+
+    .widget-title{
+        font-size: 1.5rem;
+    }
+}

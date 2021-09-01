@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+$grey: rgb(223, 223, 223);
+$greya: rgba(223, 223, 223, .7);
+$black: rgb(27, 27, 27);
+$white: rgb(255, 255, 255);
+$attention: royalblue;
+
+
+$max-width: 1600px;
+$base-spacing: 20px;
+$shadow: 0px 0px 2px $grey;
+
+$breakpoints: ("mobile": 320px, "small": 500px, "medium": 760px, "large": 1260px, "xl": $max-width );
+
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;
+$placeholders: ();

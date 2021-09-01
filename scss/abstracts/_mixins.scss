@@ -1,0 +1,69 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+//////////////////
+// breakpoints //
+////////////////
+
+///////////////The Media Query Mixin//////////////////
+
+@mixin breakpoint($breakpoint) {
+  // Get the width from the keyword `$breakpoint`
+  // Or `null` if the keyword doesn't exist in `$breakpoints` map
+  $value: map-get($breakpoints, $breakpoint);
+
+  // If `$breakpoint` exists as a key in `$breakpoints`
+  @if $value != null {
+    // Update `$current-breakpoint`
+    $current-breakpoint: $breakpoint !global;
+
+    // Open a media query block
+    @media (min-width: $value) {
+      // Let the user dump content
+      @content;
+    }
+
+    // Then reset `$current-breakpoint` to `$default-breakpoint` (root)
+    $current-breakpoint: $default-breakpoint !global;
+  } @else {
+    @warn "Invalid breakpoint `#{$breakpoint}`.";
+  }
+}
+
+$top: $base-spacing;
+$right: $base-spacing;
+$bottom: $base-spacing;
+$left: $base-spacing;
+
+@mixin margins($top, $right, $bottom, $left) {
+  margin-top: calc(#{$base-spacing} * #{$top});
+  margin-right: calc(#{$base-spacing} * #{$right});
+  margin-bottom: calc(#{$base-spacing} * #{$bottom});
+  margin-left: calc(#{$base-spacing} * #{$left});
+  @include breakpoint(large) {
+    margin-top: calc(#{$base-spacing * 2} * #{$top});
+    margin-right: calc(#{$base-spacing * 2} * #{$right});
+    margin-bottom: calc(#{$base-spacing * 2} * #{$bottom});
+    margin-left: calc(#{$base-spacing * 2} * #{$left});
+  }
+}
+
+@mixin max-width-flex {
+  max-width: $max-width/1.5;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include breakpoint(medium) {
+    display: flex;
+  }
+}
+
+@mixin menu-expand {
+  display: none;
+  overflow: hidden;
+
+  &.responsive {
+    display: block;
+  }
+}

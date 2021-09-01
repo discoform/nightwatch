@@ -1,0 +1,32 @@
+main[role="main"] {
+    @include max-width-flex;
+
+    section.the-content {
+        order: 1;
+        @include margins(0, 0, 2, 0);
+        @include breakpoint(medium) {
+            border-right: 1px solid $grey;
+        }
+
+        article {
+            @include margins(0, 1, 1, 1);
+            padding-bottom: $base-spacing * 2;
+
+            &:nth-child(n + 2) {
+                padding-top: $base-spacing * 2;
+                border-top: 1px solid $grey;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            @include breakpoint(large) {
+                @include margins(0, 1, 1, 0);
+            }
+        }
+
+
+    }
+}
